@@ -103,6 +103,11 @@
             font-weight: bold;
         }
 
+        .dropdown-content{
+            list-style: none;
+            border-radius: var(--borderadius);
+        }
+
         /* Icones /BARRA DE PESQUISA - Estilização dos I­cones de pesquisa e carrinho */
 
         .icones{
@@ -522,11 +527,15 @@
 
 
         /* RESPONSIVIDADE - Ajustes para telas menores (mobile) */
-        @media (max-width: 768px) {
-            .header section {
+
+
+        
+        @media (max-width: 768px) { /*Limita o tamanho da tela para 768*/
+            .header section { /*Faz que todas as sections dentro do header fiquem alinhadas em uma coluna, em cima do outro*/
                 flex-direction: column;
                 gap: 1.5rem;
             }
+            
             
             .menu-principal {
                 display: flex;
