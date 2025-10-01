@@ -97,6 +97,12 @@ section {
   display: inline-block;
 }
 
+
+.dropdown-content{
+    list-style: none;
+    border-radius: var(--borderadius);
+    }
+
 .dropbtn {
   text-decoration: none;
   color: inherit;
