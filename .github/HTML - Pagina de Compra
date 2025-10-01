@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmellCare</title>
+
+    <link rel="stylesheet" href="style-produtos.css ">
+</head>
+
+<body>
+    <header class="header">
+        <section>
+            <div class="logo-e-marca">
+                <div class="marca">
+                    <h1>SmellCare</h1>
+                </div>
+                <div class="logo">
+                    <a href="trabalho01_10.html" class="logo img">
+                        <img src="Images/Logo -Smell Care-min.png" alt="Logo da Perfumaria">
+                    </a>
+                </div>
+            </div>
+            <div class="icones">
+                <input type="text" id="pesquisar" placeholder="digite o produto desejado...">
+                <img src="Images/Pesquisar-min.svg">
+            </div>
+            <nav class="menu-principal">
+                <a href="trabalho01_10.html#inicio">Inicio</a>
+                <a href="trabalho01_10.html#sobre">Sobre</a>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Produtos ▾</a>
+                    <ul class="dropdown-content">
+                        <li><a href="trabalho01_10.html#produto-fem">Feminino</a></li>
+                        <li><a href="trabalho01_10.html#produto-masc">Masculino</a></li>
+                        <li><a href="trabalho01_10.html#ofertas">Ofertas</a></li>
+                    </ul>
+                </li>
+
+                <script>
+                    const button = document.getElementById("dropbtn");
+                    const menu = document.getElementById("menu");
+
+                    // começa escondido
+                    menu.style.display = "none";
+
+                    // mostrar quando passa o mouse no botão
+                    button.addEventListener("mouseover", () => {
+                        menu.style.display = "block";
+                    });
+
+                    // esconder quando tira o mouse do botão e do menu
+                    button.addEventListener("mouseout", (event) => {
+                        if (!menu.contains(event.relatedTarget)) {
+                            menu.style.display = "none";
+                        }
+                    });
+
+                    menu.addEventListener("mouseleave", () => {
+                        menu.style.display = "none";
+                    });
+                </script>
+
+                <a href="trabalho01_10.html#avaliacoes">Avaliações</a>
+                <a href="trabalho01_10.html#contato">Contato</a>
+            </nav>
+        </section>
+    </header>
+
+    <article class="comprar-produtos">
+        <div class="conteiner-comprar-produtos">
+            <div class="fotos-produtos">
+                <img id="produto-imagem" alt="imagem do produto">
+            </div>
+            <div class="descricao-produtos">
+                <h4 id="produto-nome"> </h4>
+                <h5 id="produto-marca"> </h5>
+
+                <p id="produto-descricao"></p>
+
+                <div class="preco-produtos">
+                    <p id="produto-preco"> </p>
+                    <p id="produto-preco-original"> </p>
+                </div>
+                <button class="botao-comprar"> Comprar </button>
+            </div>
+        </div>
+        
+    </article>
+
+
+    <footer>
+        <div class="rodape">
+
+            <nav class="menu">
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#avaliacoes">Avaliações</a>
+                <a href="#contato">Contato</a>
+            </nav>
+
+            <div class="redes-sociais">
+                <p> <strong> Siga-nos:</strong></p>
+                <a href="https://facebook.com">Facebook</a>
+                <a href="https://instagram.com">Instagram</a>
+                <a href="https://web.whatsapp.com/">WhatsApp</a>
+            </div>
+
+            <div class="Formulário">
+                <p>Cadastre seu e-mail para receber novidades:</p>
+                <form>
+                    <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
+                    <button id="cadastro" type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+
+        <p id="Fixo-baixo">SmellCare &copy; 2025 - Todos os direitos reservados</p>
+    </footer>
+
+
+
+    <!--para evitar criar uma pagina para cada produto, criar um javascript para fazer isso-->
+    <script>
+
+        // Captura o parâmetro "id" da URL
+        const listaprodutos = new URLSearchParams(window.location.search);
+        const produtoId = listaprodutos.get("id");
+
+        // Lista dos produtos da loja (Sim, todos)
+
+
+        //Produtos em Ofertas
+        const produtos = {
+            ckone: {
+                nome: "CK One (100ml)",
+                preco: "R$219,90",
+                precoOriginal: "R$299,90",
+                marca: "Calvin Klein",
+                imagem: "Images/CK-ONE(100ml)-min.webp",
+                descricao: "CK One da Calvin Klein, na versão Eau de Toilette (EDT) de 100ml, é uma fragrância cítrica aromática unissexo lançada em 1994, criada por Alberto Morillas e Harry Fremont, conhecida por ser fresca, limpa e atemporal, ideal para o uso diário e em climas quentes."
+            },
+            GoldenSecret: {
+                nome: "The Golden Secret (Masc - 100ml)",
+                preco: "R$149,90",
+                precoOriginal: "R$199,90",
+                marca: "Antonio Banderas",
+                imagem: "Images/The Golden Secret (Masc - 100ml)-min.webp",
+                descricao: "Uma fragrância para homens que gostam de jogos de sedução. Um concentrado de sedução que adiciona uma nota de mistério para um homem com um poder de atração irresistível."
+            },
+
+            lightblue: {
+                nome: "Light Blue (Fem - 50ml)",
+                preco: "R$349,90",
+                precoOriginal: "R$429,90",
+                marca: "Dolce & Gabbana",
+                imagem: "Images/DOLCE-LIGHT-BLUE-FEM-min.png",
+                descricao: "O Light Blue Eau de Toilette de Dolce&Gabbana é um clássico moderno da perfumaria feminina, lançado em 2001, que retrata o verão e o estilo de vida mediterrâneo, evocando o frescor e a sensualidade da costa italiana; famoso por sua combinação refrescante de frutas cítricas e notas amadeiradas, cria uma fragrância leve, feminina e extremamente popular, com um frasco de tampa azul clara fosca e linhas sinuosas, homenageando o mar e o céu do Mediterrâneo, refletindo a pureza e a leveza da fragrância."
+            },
+
+            individuel: {
+                nome: "Individuel (Masc - 75ml)",
+                preco: "R$279,90",
+                precoOriginal: "R$349,90",
+                marca: "Montblanc",
+                imagem: "Images/Individuel (Masc - 75ml)-min.webp",
+                descricao: "O Montblanc Individuel Eau de Toilette é uma fragrância masculina, lançada em 2003, que ganhou grande popularidade por ser única, extremamente versátil e muito elogiada, conhecida por ter um aroma que remete a roupa limpa e amaciante com um toque gourmand e amadeirado, se destaca por sua complexa pirâmide olfativa, misturando mais de dez notas na saída, resultando em um perfume fresco e sofisticado sem ser pesado."
+            },
+
+            amoramor: {
+                nome: "Amor Amor (Fem - 50ml)",
+                preco: "R$259,90",
+                precoOriginal: "R$319,90",
+                marca: "Cacharel",
+                imagem: "Images/Amor Amor (Fem - 50ml)-min.webp",
+                descricao: "Amor Amor de Cacharel é o perfume da paixão e do amor à primeira vista: intenso, imediato, vivo e eletrizante; lançado em 2003, tornou-se um ícone atemporal da perfumaria, celebrando os sentimentos mais fervorosos e o romantismo moderno da juventude, com um frasco em vermelho vibrante e apaixonado em formato de pílula, remetendo a uma flecha de Cupido que atravessa o coração, simbolizando a intensidade da paixão e a promessa de um amor arrebatador."
+            },
+
+            coolwater: {
+                nome: "Cool Water (Masc - 125ml)",
+                preco: "R$239,90",
+                precoOriginal: "R$309,90",
+                marca: "Davidoff",
+                imagem: "Images/Cool Water (Masc - 125ml)-min.webp",
+                descricao: "O Cool Water é sinônimo de frescor lendário do oceano, representando força, vitalidade e masculinidade pura, com um cheiro que remete a uma sensação de recém-saído do banho; lançado em 1988, é um dos perfumes masculinos mais icônicos e influentes da história da perfumaria, frequentemente citado como o pioneiro da moderna família olfativa Aquática Aromática masculina, moldando uma geração de fragrâncias masculinas e permanecendo uma escolha popular e acessível."
+            },
+
+            fantasy: {
+                nome: "Fantasy (Fem - 100ml)",
+                preco: "R$189,90",
+                precoOriginal: "R$249,90",
+                marca: "Britney Spears",
+                imagem: "Images/Fantasy (Fem - 100ml)-min.jpeg",
+                descricao: "O Fantasy Eau de Parfum de Britney Spears é um dos perfumes de celebridades mais vendidos e icônicos do mundo; lançado em 2005, é uma poção do amor doce e gourmand, evocando um mundo de fantasia, sensualidade e diversão, conhecido por ser jovem e sedutor, com um perfil olfativo que remete a doces e sobremesas, consagrando-se como um clássico da categoria gourmand; sua composição rica e viciante mistura frutas exóticas com o cheiro delicioso de sobremesas, enquanto o frasco fúcsia vibrante e cravejado com cristais representa o caráter mágico e glamouroso da fragrância"
+            },
+
+            azzaro: {
+                nome: "Azzaro Pour Homme (Masc - 100ml)",
+                preco: "R$299,90",
+                precoOriginal: "R$379,90",
+                marca: "Azzaro",
+                imagem: "Images/Azzaro Pour Homme (Masc - 100ml)-min.webp",
+                descricao: "O Fantasy Eau de Parfum de Britney Spears é um dos perfumes de celebridades mais vendidos e icônicos do mundo; lançado em 2005, é uma poção do amor doce e gourmand, evocando um mundo de fantasia, sensualidade e diversão, conhecido por ser jovem e sedutor, com um perfil olfativo que remete a doces e sobremesas, consagrando-se como um clássico da categoria gourmand; sua composição rica e viciante mistura frutas exóticas com o cheiro delicioso de sobremesas, enquanto o frasco fúcsia vibrante e cravejado com cristais representa o caráter mágico e glamouroso da fragrância"
+            },
+
+            //Produtos Masculinos
+
+            sauvage: {
+                nome: "Sauvage (EDT - 100ml)",
+                preco: "R$679,90",
+                precoOriginal: "R$759,90",
+                marca: "Dior",
+                imagem: "Images/SauvageDior-min.png",
+                descricao: "O Sauvage Eau de Toilette da Dior é uma das fragrâncias masculinas mais famosas e vendidas do mundo moderno; lançado em 2015 e criado pelo perfumista François Demachy, rapidamente se tornou um ícone por sua combinação de frescor potente e notas ambaradas, classificado como um Aromático Fougère, inspirado pelo ar livre, céu azul e paisagens rochosas sob o sol do deserto, resultando em um aroma fresco, apimentado e nobremente amadeirado; construído em torno de uma overdose de ingredientes crus e naturais, Sauvage EDT é uma escolha de assinatura por excelência: reconhecível, moderno e com um toque de virilidade inconfundível."
+            },
+
+            lemale: {
+                nome: "Le Male (EDT - 75ml)",
+                preco: "R$419,90",
+                precoOriginal: "R$499,90",
+                marca: "Jean Paul Gaultier",
+                imagem: "Images/Le-Male-Eau-De-Toilette-Jean-Paul-Gaultier--min.webp",
+                descricao: "O Le Male Eau De Toilette de Jean Paul Gaultier é um dos perfumes masculinos mais icônicos e revolucionários da perfumaria moderna; lançado em 1995, presta homenagem à figura sensual e viril do marinheiro, apresentado em seu inconfundível frasco em formato de torso com listras de marinheiro. Classificado como um Oriental Fougère, é conhecido por misturar a frescura e o aspecto de barbearia com uma doçura quente e envolvente, tornando-se único; a magia de Le Male reside no contraste entre o tradicional e o sensual."
+            },
+
+            badboy: {
+                nome: "Bad Boy (EDT - 100ml)",
+                preco: "R$579,90",
+                precoOriginal: "R$659,90",
+                marca: "Carolina Herrera",
+                imagem: "Images/BadBoy-min.webp",
+                descricao: "O perfume Bad Boy é descrito como uma expressão da dualidade do homem moderno: forte e sensível, rebelde e elegante, celebrando aquele que traça seu próprio caminho e não tem medo de quebrar regras; sua família olfativa é o Âmbar Especiada, criando um aroma quente, envolvente e levemente adocicado, ideal para encontros ou uso noturno, especialmente em climas amenos. O design é um dos seus maiores diferenciais, com um frasco em forma de raio que simboliza poder, energia e o lado imprevisível do homem."
+            },
+
+            theblend: {
+                nome: "The Blend (EDP - 100ml)",
+                preco: "R$259,90",
+                precoOriginal: "R$299,90",
+                marca: "O Boticário",
+                imagem: "Images/TheBlend-min.png",
+                descricao: "O The Blend Eau de Parfum de O Boticário é uma fragrância masculina premium, conhecida por sua sofisticação e a qualidade de seu óleo essencial exclusivo; lançado em 2019, é classificado na família olfativa Amadeirado Especiado Oriental. O perfume resulta da busca por uma combinação perfeita de especiarias e madeira, com seu segredo residindo na criação de um óleo essencial único, produzido na fábrica d'O Boticário através da destilação de quatro especiarias in natura em um alambique de cobre, criando um quinto elemento inédito que forma a espinha dorsal do Eau de Parfum. Sua composição é complexa, oferecendo nuances frescas na saída e um corpo rico e quente."
+            },
+
+            homemsagaz: {
+                nome: "Homem Sagaz (Deo Parfum - 100ml)",
+                preco: "R$159,90",
+                precoOriginal: "R$189,90",
+                marca: "Natura",
+                imagem: "Images/HomemSagaz-min.png",
+                descricao: "O Natura Homem Sagaz Deo Parfum é uma das fragrâncias masculinas mais populares da linha Natura Homem, conhecida por ser marcante, sensual e versátil; desenvolvido para o homem perspicaz e autoconfiante, que expressa sua personalidade de forma ousada. Destaca-se por misturar o frescor de notas aromáticas com o calor de madeiras e toques especiados e licorosos, resultando em um aroma equilibrado para diversas ocasiões. A combinação olfativa cria um contraste entre o frescor da saída e a sensualidade do fundo."
+            },
+
+
+            coffeman: {
+                nome: "Coffee Man (Colônia - 100ml)",
+                preco: "R$149,90",
+                precoOriginal: "R$179,90",
+                marca: "O Boticário",
+                imagem: "Images/CoffeMan-min.png",
+                descricao: "A linha Coffee é única por usar a tecnologia da infusão dos mais nobres grãos de café arábica em sua composição, proporcionando uma assinatura marcante e envolvente; a fragrância é uma mistura sofisticada de frescor especiado com o calor do café e notas mais secas. É uma excelente escolha para quem procura um perfume nacional com ótima fixação e uma proposta olfativa diferenciada"
+            },
+
+            quasar: {
+                nome: "Quasar (Colônia - 100ml)",
+                preco: "R$129,90",
+                precoOriginal: "R$159,90",
+                marca: "O Boticário",
+                imagem: "Images/Quasar-min.png",
+                descricao: "A colônia Quasar Classic de O Boticário é um dos grandes ícones da perfumaria masculina brasileira, amplamente conhecida pelo seu frescor revigorante e sensação de energia; é uma escolha perfeita para o dia a dia, especialmente em climas quentes. Classificada como um Fougère Fresco Aromático, essa fragrância busca o equilíbrio entre notas cítricas, aromáticas e um fundo amadeirado. Quasar Classic é sinônimo de energia e frescor, sendo a escolha certa para quem busca uma fragrância leve, masculina e super funcional no clima brasileiro."
+            },
+
+            //Produtos Femininos
+
+            olympea: {
+                nome: "Olympéa (EDP - 80ml)",
+                preco: "R$519,90",
+                precoOriginal: "R$599,90",
+                marca: "Rabanne",
+                imagem: "Images/olympea-min.webp",
+                descricao: "Olympéa, o icônico perfume feminino de Paco Rabanne, celebra a força, poder e feminilidade da mulher contemporânea, encapsulada em uma fragrância oriental fresca e intensamente sedutora. Lançado em 2015, este Eau de Parfum se estabeleceu como um clássico moderno, evocando a imagem de uma deusa grega em tempos atuais: vitoriosa, magnética e irresistivelmente charmosa. A inspiração por trás de Olympéa é a de uma Cleópatra moderna, uma mulher que comanda a atenção e personifica o sucesso. A fragrância é a contraparte feminina do sucesso masculino da marca, Invictus, compartilhando a temática de vitória e poder."
+            },
+
+            viprose: {
+                nome: "212 Vip Rosé (EDP - 80ml)",
+                preco: "R$549,90",
+                precoOriginal: "R$639,90",
+                marca: "Carolina Herrera",
+                imagem: "Images/212VipRose-min.webp",
+                descricao: "212 VIP Rosé é uma fragrância feminina que encapsula o glamour, a autenticidade e a energia das melhores festas de Nova York; criado para a mulher espontânea, confiante e que é o centro das atenções, este perfume Floral Frutado Amadeirado é um convite para reescrever as regras e celebrar a vida. O icônico frasco em formato de pílula da linha 212 ganha um toque de sofisticação moderna com um acabamento champagne rosé em degradê, transmitindo feminilidade, luxo e a atmosfera exclusiva de uma festa VIP."
+            },
+
+            heroes: {
+                nome: "212 Heroes For Her (EDP - 80ml)",
+                preco: "R$569,90",
+                precoOriginal: "R$659,90",
+                marca: "Carolina Herrera",
+                imagem: "Images/212-heroes-min.webp",
+                descricao: "212 Heroes For Her é mais do que uma fragrância; é uma celebração audaciosa e efervescente da juventude sem limites, da autenticidade e da liberdade de ser quem você realmente é. Inspirado por mulheres que transformam o mundo com talento e atitude, este perfume floral frutado amadeirado convida a abraçar a individualidade. O design é um capítulo à parte, apresentado em um frasco icônico e revolucionário em formato de skate, um poderoso símbolo de juventude, liberdade e autoexpressão. Nesta versão feminina, o frasco ganha um tom ultra-sofisticado de ouro rosé, fabricado de forma inovadora em vidro cromado."
+            },
+
+            yara: {
+                nome: "Yara (EDP - 100ml)",
+                preco: "R$249,90",
+                precoOriginal: "R$319,90",
+                marca: "Lattafa",
+                imagem: "Images/LattaffaYara-min.webp",
+                descricao: "O Yara Eau de Parfum, da casa de perfumes árabes Lattafa, é uma fragrância feminina que se tornou um sucesso mundial, popularmente conhecida como a rosinha árabe devido à sua embalagem rosa vibrante. Famoso por ser um perfume doce, cremoso e muito envolvente, possui um perfil olfativo que agrada a quem busca fragrâncias marcantes e sensuais. O Yara é classificado como uma fragrância Âmbar Baunilha, combinando a doçura frutada com a riqueza do floral e a cremosidade do gourmand, resultando em um aroma que é ao mesmo tempo exótico, tropical e extremamente macio. O perfume se desenvolve em camadas doces e sensuais, proporcionando uma experiência olfativa rica e envolvente."
+            },
+
+            egeored: {
+                nome: "Egeo Red (Colônia - 90ml)",
+                preco: "R$119,90",
+                precoOriginal: "R$144,90",
+                marca: "O Boticário",
+                imagem: "Images/Egeo Red-min.jpeg",
+                descricao: "O Egeo Red Desodorante Colônia de O Boticário é uma fragrância que se destaca por ser intensa, sensual e envolvente, trazendo um toque licoroso e adocicado com a força das madeiras. Lançado em 2018, o Egeo Red foi criado para ser uma fragrância marcante e viciante, ideal para quem deseja esbanjar sensualidade e intensidade. Ele se diferencia por combinar o lado doce da linha Egeo com notas mais licorosas e amadeiradas. A combinação olfativa do Egeo Red é desenhada para criar uma experiência instigante e deliciosa, perfeita para momentos especiais."
+            },
+
+            egeodolce: {
+                nome: "Egeo Dolce (Colônia - 90ml)",
+                preco: "R$119,90",
+                precoOriginal: "R$144,90",
+                marca: "O Boticário",
+                imagem: "Images/Egeo Dolce-min.jpg",
+                descricao: "O Egeo Dolce é conhecido por ser uma fragrância que convida à diversão, à sedução e à leveza. Sua composição é inspirada no lado doce da vida, especialmente no cheiro de guloseimas. É um dos maiores sucessos de vendas da perfumaria nacional, sendo um ícone para as amantes de fragrâncias doces. A fragrância busca recriar o aroma prazeroso e confortável de doces que remetem à infância, mas com um toque de sensualidade. A linha Egeo Dolce é frequentemente associada a um público jovem e a quem não tem medo de fragrâncias intensamente açucaradas"
+            },
+
+            ladylily: {
+                nome: "Lady Lily (Splash - 200ml)",
+                preco: "R$89,90",
+                precoOriginal: "R$109,90",
+                marca: "O Boticário",
+                imagem: "Images/LadyLily-min.webp",
+                descricao: "O Lady Lily Splash Desodorante Colônia, conhecido simplesmente como Lily Splash de O Boticário, é a versão mais leve e refrescante da icônica e sofisticada fragrância Lily Eau de Parfum. Ele é um Body Splash com a função de colônia, perfeito para prolongar a sensação de banho e proporcionar uma perfumação suave no dia a dia. O Lily Splash mantém o DNA do perfume original, centrado na nobreza da nota de Lírio, mas de uma forma mais suave e arejada, ideal para uso abundante após o banho e em climas quentes. A fragrância utiliza a mesma base olfativa do perfume Lily, mas com uma concentração mais leve, tornando-a uma escolha perfeita para quem busca frescor e elegância em uma versão mais descontraída"
+            },
+
+
+            encanto: {
+                nome: "Encanto (Colônia Fascinante)",
+                preco: "R$59,90",
+                precoOriginal: "R$79,90",
+                marca: "Avon",
+                imagem: "Images/FloralEncanto-min.jpeg",
+                descricao: "O Encanto Fascinante da Avon é uma fragrância que faz parte da linha de cuidados e perfumaria corporal da marca. Embora a apresentação mais comum seja como Spray Corporal Perfumado (Body Splash), é frequentemente referido como Colônia por perfumar a pele. A proposta da linha é oferecer um aroma envolvente e sofisticado, combinando notas exóticas e doces. A fragrância é tipicamente associada à nota de Flor de Jade, uma flor exótica que confere um toque floral e aquático, enquanto sua base é composta por madeiras e notas adocicadas. A composição é descrita como uma fusão de frescor, elegância floral e cremosidade, tornando-o uma escolha ideal para quem busca um perfume leve e sofisticado"
+            },
+
+        };
+
+        // Pega o produto da lista usando o ID da URL
+        const produto = produtos[produtoId];
+
+        // Verifica se o produto foi encontrado antes de tentar preencher a página
+        if (produto) {
+            document.getElementById("produto-nome").innerText = produto.nome;
+            document.getElementById("produto-marca").innerText = produto.marca;
+            document.getElementById("produto-preco").innerText = produto.preco;
+            document.getElementById("produto-preco-original").innerText = produto.precoOriginal;
+            document.getElementById("produto-descricao").innerText = produto.descricao;
+            document.getElementById("produto-imagem").src = produto.imagem;
+        }
+
+
+
+
+    </script>
+
+</body>
