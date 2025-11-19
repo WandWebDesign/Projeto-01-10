@@ -58,7 +58,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 99;
+            z-index: 999; /* Aumentei para garantir que fique sobre tudo */
             border-bottom: var(--border);
             background-color: var(--headercolor);
         }
@@ -70,12 +70,14 @@
             justify-content: space-between;
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
+            gap: 20px; /* Espaço entre Logo, Busca e Menu */
         }
 
-        .logo-e-marca{
+        .logo-e-marca {
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-shrink: 0; /* Impede que o logo amasse se a tela diminuir */
         }
 
         /* LOGO - Estilização da imagem da logo */
@@ -110,29 +112,33 @@
 
         /* Icones /BARRA DE PESQUISA - Estilização dos I­cones de pesquisa e carrinho */
 
-        .icones{
-            font-size: 1.8rem;
+        .icones {
             display: flex;
             align-items: center;
-            padding-left: 10px;
-            flex: auto;
-            gap: 10px;      
-    
-         }
+            flex: 1; /* MÁGICA: Faz a barra ocupar todo o espaço disponível no meio */
+            max-width: 600px; /* Limite para não ficar infinito em telas grandes */
+            margin: 0 20px; /* Afasta do logo e do menu */
+        }
 
 
-         .icones  #pesquisar{
+         .icones #pesquisar {
             font-family: 'Poppins';
-            padding: 8px;
+            padding: 10px 15px; /* Um pouco mais de padding para ficar bonito */
             border-radius: var(--borderadius);
-            width: 100%;
-            transition: all 0.s ease; 
-         }
+            flex: 1; /* Ocupa todo o espaço sobrando ao lado da lupa */
+            background: transparent; /* Fundo transparente pois o container já é branco */
+            color: #333; /* Texto escuro para contraste */
+            border: none; /* Remove borda padrão */
+            font-size: 1.4rem; /* Tamanho da fonte ajustado */
+        }
 
          #pesquisar:hover{
             border: 1px solid #000000;
-
          }
+
+         .icones #pesquisar:focus {
+            outline: none;
+        }
 
 
         .icones img {
@@ -170,49 +176,49 @@
 
 
 
-/* Estilo para o dropdown */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+        /* Estilo para o dropdown */
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
 
-.dropbtn {
-  text-decoration: none;
-  color: inherit;
-  padding: px 15px;
-  display: inline-block;
-}
+        .dropbtn {
+        text-decoration: none;
+        color: inherit;
+        padding: px 15px;
+        display: inline-block;
+        }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #fff; /* fundo do menu */
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff; /* fundo do menu */
+        min-width: 160px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
 
-.dropdown-content a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-}
+        .dropdown-content a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        }
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
+        .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        }
 
-/* Mostra o submenu ao passar o mouse */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+        /* Mostra o submenu ao passar o mouse */
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
 
-/* opcional: mudar cor do botÃ£o ao hover */
-.dropdown:hover .dropbtn {
-  color: #ff007b; /* azul ou outra cor da sua paleta */
-  font-weight: bold;
-}
+        /* opcional: mudar cor do botÃ£o ao hover */
+        .dropdown:hover .dropbtn {
+        color: #ff007b; /* azul ou outra cor da sua paleta */
+        font-weight: bold;
+        }
 
         /* SEÇÃO INICIAL - Imagem de fundo com texto sobreposto */
         .iniciar {
@@ -424,136 +430,204 @@
         /* RODAPÉ */
         footer {
             background-color: var(--headercolor);
-            padding: 2rem;
-            font-size: 1.6rem;
-            margin-top: 3rem;
-            position: relative;
-        }
-
-        .menu a {
             color: white;
-            padding: 4px;
-            text-decoration: none;
-            width: 100px;
-            margin: 0 1rem;
-            display: grid;
+            margin-top: 4rem;
+            border-top: var(--border);
+            font-family: 'Poppins', sans-serif; /* Fonte mais legível para rodapé */
         }
 
-        .menu a:hover {
-            text-decoration: underline;
+        .rodape {
+            display: flex; /* Organiza em colunas lado a lado */
+            justify-content: space-around; /* Espaçamento igual entre as colunas */
+            align-items: flex-start; /* Alinha tudo ao topo */
+            flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem; /* Espaço entre as colunas */
         }
 
-        /*Parte dos "Siga-Nos*/
-        .redes-sociais,
+        /* Colunas do Rodapé (Menu, Redes, Form) */
+        .menu, 
+        .redes-sociais, 
         .Formulário {
-            text-align: right;
-        position: absolute;
-        right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Espaço entre os links/itens */
+            min-width: 250px; /* Tamanho mínimo para não ficar muito espremido */
         }
 
-        .redes-sociais {
-            top: 2rem;
-        }
-
-        .redes-sociais a {
-            color: white;
-            display: grid;
-            padding: 4px;
-        }
-
-        .redes-sociais a:hover {
-            text-decoration: underline;
-        }
-
-        /*Parte do Formulário*/
-        .Formulário {
-            top: 15rem;
-        }
-
+        /* Estilo dos Títulos/Texto forte */
+        .redes-sociais p strong,
         .Formulário p {
-            margin-bottom: 3px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
         }
 
+        /* Links do Menu e Redes */
+        .menu a,
+        .redes-sociais a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            padding-left: 0; /* Remove padding antigo */
+        }
+
+        .menu a:hover,
+        .redes-sociais a:hover {
+            color: var(--hover-color);
+            transform: translateX(5px); /* Move levemente para a direita */
+            text-decoration: none; /* Remove sublinhado padrão */
+        }
+
+        /* Formulário de Newsletter */
         footer form {
-            border-radius: var(--borderadius);
-            background: #6955B2;
-            padding: 10px;
-        }
-
-        #Fixo-baixo {
-            color: white;
-            text-align: center;
-            padding-top: 80px;
-            background-color: var(--headercolor);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: transparent; /* Remove fundo roxo antigo se preferir clean */
+            padding: 0;
         }
 
         #email {
-            font-family: 'Poppins';
+            font-family: 'Poppins', sans-serif;
             background: var(--bg);
+            border: none;
             border-radius: var(--borderadius);
-            padding: 10px;
-            width: 280px;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box; /* Garante que o padding não aumente a largura */
+            color: var(--text);
         }
 
         #cadastro {
-            font-family: 'Poppins';
+            font-family: 'Poppins', sans-serif;
             color: #484343;
             font-weight: 700;
             background-color: var(--color-btn);
-            height: 40px;
-            width: 100px;
-            margin-left: 10px;
+            height: 45px;
+            width: 100%; /* Botão ocupa largura total do form */
             border-radius: var(--borderadius);
+            margin-left: 0;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
         #cadastro:hover {
-            cursor: pointer;
-            transform: scale(0.9);
-            color: white;
             background-color: var(--hover-btn);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Barra de Direitos Autorais */
+        #Fixo-baixo {
+            background-color: rgba(0, 0, 0, 0.2); /* Um pouco mais escuro que o header */
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: 0; /* Remove margin antiga */
         }
 
 
-    /* .menu{
-            border: 1px solid black;
-            text-align: left;
-            display: grid;
-            grid-template-columns: repeat(1)
+                /* --- ESTILO DA BARRA DE PESQUISA LIVE --- */
 
-        }*/
-
-    
-
-
-
-        /* RESPONSIVIDADE - Ajustes para telas menores (mobile) */
-
-
+        /* Container para garantir que a lista fique embaixo do input */
+        .container-busca {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%; /* Preenche 100% da div .icones */
+            background-color: #fff; /* Fundo branco para o campo */
+            border-radius: var(--borderadius);
+            padding-right: 10px; /* Espaço para a lupa não colar na borda */
+        }
         
-        @media (max-width: 768px) { /*Limita o tamanho da tela para 768*/
-            .header section { /*Faz que todas as sections dentro do header fiquem alinhadas em uma coluna, em cima do outro*/
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            
-            
-            .menu-principal {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            
-            .conteudo-sobre {
-                flex-direction: column;
-            }
-            
-            .iniciar h3 {
-                font-size: 3.5rem;
-            }
-            
-            .conteiner-avaliacoes {
-                flex-direction: column;
+        /* A lista de resultados (escondida por padrão) */
+        .resultado-busca-lista {
+            position: absolute;
+            top: 100%; /* Cola logo abaixo do input */
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Sombra mais forte para destacar */
+            z-index: 10000; /* Z-index altíssimo para ficar na frente de tudo */
+            display: none; 
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 5px; /* Pequeno espaço entre a barra e a lista */
+        }
+
+        /* Cada item da lista */
+        .item-busca {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333; /* Garante que o texto seja escuro */
+            background-color: white; /* Garante fundo branco */
+        }
+
+        .item-busca:hover {
+            background-color: #f0f0f0; /* Cinza claro no hover */
+        }
+        .item-busca:last-child {
+            border-bottom: none;
+        }
+
+        /* Imagem pequena dentro da busca */
+        .item-busca img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 10px;
+            /* Remove margin da lupa herdada anteriormente */
+            margin-left: 0; 
+        }
+
+        .info-busca {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .info-busca h4 {
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .info-busca span {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* RESPONSIVIDADE DO RODAPÉ */
+        @media (max-width: 768px) {
+            .rodape {
+                flex-direction: column; /* Empilha um embaixo do outro no celular */
                 align-items: center;
+                text-align: center;
+            }
+
+            .menu, .redes-sociais, .Formulário {
+                align-items: center; /* Centraliza o conteúdo das colunas */
+                width: 100%;
+            }
+            
+            .menu a:hover,
+            .redes-sociais a:hover {
+                transform: translateX(0) scale(1.1); /* No celular, aumenta em vez de mover */
             }
         }
